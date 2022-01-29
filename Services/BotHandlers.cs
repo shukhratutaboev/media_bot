@@ -52,16 +52,11 @@ namespace media_bot.Services
             {
                 await client.SendTextMessageAsync(
                     message.Chat.Id,
-                    "Salom, bu bot siz izlagan rasm yoki videoni topib beradi."
+                    "Salom, bu bot siz izlagan rasm yoki videoni topib beradi.",
+                    replyMarkup: Buttons.Choices()
                 );
             }
-            if(message.Text.ToLower() == "salom")
-            {
-                await client.SendTextMessageAsync(
-                    message.Chat.Id,
-                    "Sog' bo'l bo'tam"
-                );
-            }
+            
         }
     }
 }
