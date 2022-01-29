@@ -14,6 +14,12 @@ builder.Services.AddDbContext<BotDbContext>(
 builder.Services.AddSingleton<TelegramBotClient>(b => new TelegramBotClient(builder.Configuration.GetConnectionString("Token")));
 builder.Services.AddHostedService<Bot>();
 builder.Services.AddTransient<BotHandlers>();
+builder.Services.AddTransient<IStorageService, DbStorageService>();
+builder.Services.AddHttpClient<PixabayClient>(
+    client => {
+        client.BaseAddress = new Uri("https://pixabay.com/api/");
+    }
+);
 
 var app = builder.Build();
 
